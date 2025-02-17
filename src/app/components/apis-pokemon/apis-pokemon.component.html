@@ -1,0 +1,67 @@
+<!-- Campo para ingresar el ID -->
+<div class="form-container">
+    <div class="input-group">
+      <label for="characterId">Ingrese el ID del personaje:</label>
+      <input
+        type="number"
+        id="characterId"
+        [(ngModel)]="characterId"
+        placeholder="Ejemplo: 536"
+      />
+    </div>
+    <div class="input-group">
+      <label for="characterName">Ingrese el Nombre del personaje:</label>
+      <input
+        type="text"
+        id="characterName"
+        [(ngModel)]="characterName"
+        placeholder="Ejemplo: Rick"
+      />
+    </div>
+  
+    <div class="button-group">
+      <button (click)="fetchCharacter()">Consultar por ID</button>
+      <button (click)="fetchCharacterByName()">Consultar por Nombre</button>
+      <button (click)="guardarDatos()">Guardar Datos</button>
+      <button (click)="startVoiceSearch()">🔊 Buscar por voz</button>
+    </div>
+  </div>
+  <!-- Mostrar el texto reconocido -->
+<!-- Mostrar el texto reconocido -->
+<div *ngIf="recognizedText">
+    <p><strong>Texto reconocido:</strong> {{ recognizedText }}</p> <!-- Mostrar lo que se dijo -->
+  </div>
+  
+  
+  <!-- Indicador de carga -->
+  <div class="loading-overlay" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Cargando...</p>
+  </div>
+  
+  <!-- Tabla para mostrar los resultados -->
+  <div class="table-container" *ngIf="items.length > 0">
+    <table class="item-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Especie</th>
+          <th>Estado</th>
+          <th>Imagen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td data-label="ID">{{ item.id }}</td>
+          <td data-label="Nombre">{{ item.name }}</td>
+          <td data-label="Especie">{{ item.species }}</td>
+          <td data-label="Estado">{{ item.status }}</td>
+          <td data-label="Imagen">
+            <img [src]="item.image" alt="{{ item.name }}" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

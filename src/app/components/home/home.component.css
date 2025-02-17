@@ -1,0 +1,101 @@
+/* Contenedor Principal */
+.home-container {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #dddfe2, #dddfe2);
+  color: white;
+  min-height: 100vh;
+}
+
+/* Título Principal */
+.home-title {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtítulo */
+.home-subtitle {
+  font-size: 1.2rem;
+  color: #007bff;
+  margin-bottom: 30px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* Estilo para las tarjetas */
+.home-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.home-card {
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.home-card p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+/* Botón */
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #a5a5a5;
+  transform: scale(1.05);
+}
+
+/* Efecto hover en tarjetas */
+.home-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .home-title {
+      font-size: 2rem;
+  }
+
+  .home-subtitle {
+      font-size: 1rem;
+  }
+
+  .home-grid {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .home-card {
+      width: 90%;
+  }
+}
+  

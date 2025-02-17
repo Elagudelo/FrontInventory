@@ -1,0 +1,116 @@
+/* Título de la tabla */
+.titulo-tabla {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Contenedor de la tabla */
+.table-container {
+  margin-top: 40px;
+  padding: 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e2e2e2, #f4f4f4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow-x: auto; /* Soporte para pantallas pequeñas */
+}
+
+/* Estilo de la tabla */
+.item-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.item-table th,
+.item-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.item-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.item-table td {
+  color: #333;
+  background-color: #fff;
+}
+
+.item-table td img {
+  max-width: 120px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Efecto hover para filas */
+.item-table tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .item-table {
+    font-size: 14px;
+  }
+
+  .item-table td img {
+    max-width: 80px;
+  }
+}
+
+/* Botones estilo adicional */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.button:active {
+  background-color: #00408a;
+  transform: scale(0.95);
+}
+.btn-eliminar {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-eliminar:hover {
+  background-color: #ff1a1a;
+  transform: translateY(-2px);
+}
+
+.btn-eliminar:active {
+  background-color: #cc0000;
+  transform: translateY(2px);
+}

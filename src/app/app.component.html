@@ -1,0 +1,14 @@
+<!-- Navbar con diseño renovado -->
+<nav class="navbar" *ngIf="isLoggedIn() && !isLoginPage()">
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active"><mat-icon>home</mat-icon> Home</a></li>
+    <li><a routerLink="/productos" routerLinkActive="active"><mat-icon>shopping_cart</mat-icon> Productos</a></li>
+    <li><a routerLink="/categorias" routerLinkActive="active"><mat-icon>folder</mat-icon> Categorías</a></li>
+    <li><a href="#" (click)="logout()"><mat-icon>exit_to_app</mat-icon> Cerrar Sesión</a></li>
+  </ul>
+</nav>
+
+<!-- Contenedor principal -->
+<div class="content-container">
+  <router-outlet></router-outlet>
+</div>

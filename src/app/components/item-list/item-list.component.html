@@ -1,0 +1,30 @@
+<h2 class="titulo-tabla">Lista de Personajes</h2>
+
+<div class="table-container">
+  <table class="item-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Status</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td data-label="ID">{{ item.idItem }}</td>
+        <td data-label="Nombre">{{ item.nombresItem }}</td>
+        <td data-label="Descripción">{{ item.descripcionItem }}</td>
+        <td data-label="Status">{{ item.statusItem }}</td>
+        <td data-label="Imagen">
+          <img [src]="item.imagenItem" alt="{{ item.nombresItem }}" />
+        </td>
+        <td>
+          <button (click)="eliminarItem(item.idItem)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

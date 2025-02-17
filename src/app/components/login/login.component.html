@@ -1,0 +1,24 @@
+<div class="login-container">
+    <h2 class="titulo-login">Iniciar Sesión</h2>
+    <form (ngSubmit)="onSubmit()" class="login-form">
+      
+      <!-- Usuario con icono de Font Awesome -->
+      <div class="input-group">
+        <label for="username">
+          <i class="fas fa-user"></i> Usuario
+        </label>
+        <input type="text" id="username" [(ngModel)]="username" name="username" required>
+      </div>
+  
+      <!-- Contraseña con icono de Font Awesome -->
+      <div class="input-group">
+        <label for="password">
+          <i class="fas fa-lock"></i> Contraseña
+        </label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required>
+      </div>
+  
+      <button type="submit" class="button">Ingresar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,165 @@
+/* Título de la página */
+.titulo {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-top: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* Estilo para el contenedor del formulario */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 30px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e2e2e2, #f4f4f4); /* Fondo original */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Etiquetas y campos alineados horizontalmente */
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  width: 100%; /* Ocupa todo el ancho */
+  max-width: 400px; /* Limitar ancho */
+}
+
+label {
+  font-size: 16px; /* Reducir tamaño de fuente */
+  font-weight: bold;
+  color: #555;
+  margin-right: 10px;
+  flex: 1; /* Asegura alineación proporcional */
+  text-align: right; /* Alinea la etiqueta a la derecha */
+}
+
+input[type="number"],
+input[type="text"] {
+  padding: 8px; /* Reducir relleno */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  width: 200px; /* Ancho del campo */
+  border-radius: 6px; /* Borde más pequeño */
+  border: 2px solid #007bff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+/* Botones ajustados */
+.button-group {
+  display: flex;
+  justify-content: center; /* Centrar botones */
+  gap: 10px; /* Espacio uniforme entre botones */
+  flex-wrap: wrap;
+}
+
+button {
+  padding: 8px 20px; /* Relleno reducido */
+  font-size: 14px; /* Tamaño de fuente más pequeño */
+  border-radius: 6px; /* Bordes más pequeños */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 5px; /* Espaciado entre botones */
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  background-color: #00408a;
+  transform: translateY(2px);
+}
+
+/* Estilo para la tabla */
+.table-container {
+  margin-top: 40px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 12px; /* Ajustar el relleno de la tabla */
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  color: #333;
+}
+
+td img {
+  max-width: 120px; /* Mantener tamaño de las imágenes */
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Efecto hover sobre filas */
+tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  table {
+    font-size: 14px;
+  }
+
+  td img {
+    max-width: 80px;
+  }
+
+  .input-group {
+    flex-direction: column; /* En pantallas pequeñas, etiquetas y campos van en vertical */
+    align-items: flex-start;
+  }
+
+  label {
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 50%;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

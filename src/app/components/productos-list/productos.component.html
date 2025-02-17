@@ -1,0 +1,80 @@
+<div class="table-container">
+  <h2 class="titulo-tabla">Lista de Productos</h2>
+
+  <!-- Botón para crear un producto -->
+  <button mat-raised-button color="primary" routerLink="/productos/crearproducto">
+    <mat-icon>add_box</mat-icon> Crear Producto
+  </button>
+
+  <!-- Tabla de productos -->
+  <table class="item-table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Stock Actual</th>
+        <th>Stock Minimo</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Proveedor</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.codigo }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.stockActual }}</td>
+        <td>{{ producto.stockMinimo }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td>{{ producto.proveedor }}</td>
+        <td>
+          <!-- Botón de editar -->
+          <button mat-raised-button color="accent" (click)="editarProducto(producto)">
+            <mat-icon>edit</mat-icon> Editar
+          </button>
+          <!-- Botón de eliminar -->
+          <button mat-raised-button color="warn" (click)="eliminarProducto(producto.id)">
+            <mat-icon>delete</mat-icon> Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+<!-- Formulario de edición (aparece cuando se hace clic en editar) -->
+<div *ngIf="productoEditado.id" class="formulario-edicion">
+  <h3 class="titulo-edicion">Editar Producto</h3>
+  <form (ngSubmit)="guardarEdicion()" class="formulario">
+    <div class="form-group">
+      <label for="codigo">Código</label>
+      <input [(ngModel)]="productoEditado.codigo" name="codigo" id="codigo" required />
+    </div>
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input [(ngModel)]="productoEditado.nombre" name="nombre" id="nombre" required />
+    </div>
+    <div class="form-group">
+      <label for="descripcion">Descripción</label>
+      <input [(ngModel)]="productoEditado.descripcion" name="descripcion" id="descripcion" />
+    </div>
+    <div class="form-group">
+      <label for="stockActual">Stock Actual</label>
+      <input [(ngModel)]="productoEditado.stockActual" name="stockActual" type="number" id="stockActual" required />
+    </div>
+    <div class="form-group">
+      <label for="stockMinimo">Stock Mínimo</label>
+      <input [(ngModel)]="productoEditado.stockMinimo" name="stockMinimo" type="number" id="stockMinimo" required />
+    </div>
+    <div class="form-group">
+      <label for="precio">Precio</label>
+      <input [(ngModel)]="productoEditado.precio" name="precio" type="number" id="precio" required />
+    </div>
+    <div class="btn-container">
+      <button type="submit" mat-raised-button color="primary" class="btn-guardar">Guardar Cambios</button>
+    </div>
+  </form>
+</div>
