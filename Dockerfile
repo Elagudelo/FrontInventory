@@ -8,6 +8,9 @@ WORKDIR /app
 # Copiar el package.json y package-lock.json (si lo tienes)
 COPY package*.json /app/
 
+# Establecer la variable de entorno para usar el proveedor heredado de OpenSSL
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 # Instalar dependencias
 RUN npm install
 
