@@ -5,7 +5,7 @@
   height: auto;
   margin: 5vh auto; /* Centrado */
   padding: 30px;
-  background: #ffffff;
+  background: #EFF3EA;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -72,6 +72,58 @@ textarea {
   margin-top: 25px;
 }
 
+
+/* 🆕 Contenedor de los botones en la tabla */
+.btn-acciones {
+  display: flex;
+  flex-direction: row;  /* Asegura que estén en línea */
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacio entre los botones */
+  width: 100%; /* Para evitar problemas de alineación */
+}
+
+/* 🎨 Botones más pequeños y alineados */
+.btn-accion {
+  width: 36px; /* Tamaño más pequeño */
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%; /* Hace los botones redondos */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Ajuste del ícono dentro del botón */
+.btn-accion mat-icon {
+  font-size: 20px; /* Ajusta el tamaño del ícono */
+}
+
+/* 🖋️ Botón de editar */
+.btn-editar {
+  background-color: #ffc107; /* Amarillo */
+  color: black;
+}
+
+.btn-editar:hover {
+  background-color: #e0a800;
+  transform: scale(1.1);
+}
+
+/* 🗑️ Botón de eliminar */
+.btn-eliminar {
+  background-color: #dc3545; /* Rojo */
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #b52b38;
+  transform: scale(1.1);
+}
+
+
 /* Estilos generales para los botones */
 button {
   padding: 12px 20px;
@@ -104,3 +156,6 @@ button {
   background-color: #b02a37;
   transform: translateY(-2px);
 }
+
+
+

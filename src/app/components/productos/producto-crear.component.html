@@ -2,37 +2,74 @@
     <h2 class="titulo-formulario">Agregar Producto</h2>
     <form [formGroup]="productoForm" (ngSubmit)="guardarProducto()">
         <div class="form-grid">
+            <!-- Campo Código -->
             <div class="form-group">
                 <label for="codigo">Código:</label>
                 <input type="text" id="codigo" formControlName="codigo" placeholder="Ingrese el código">
+                <div *ngIf="productoForm.get('codigo')?.invalid && productoForm.get('codigo')?.touched" class="error-message">
+                    <span *ngIf="productoForm.get('codigo')?.hasError('required')">El código es obligatorio.</span>
+                    <span *ngIf="productoForm.get('codigo')?.hasError('minlength')">El código debe tener al menos 3 caracteres.</span>
+                </div>
             </div>
+
+            <!-- Campo Nombre -->
             <div class="form-group">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre">
+                <div *ngIf="productoForm.get('nombre')?.invalid && productoForm.get('nombre')?.touched" class="error-message">
+                    <span *ngIf="productoForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</span>
+                    <span *ngIf="productoForm.get('nombre')?.hasError('minlength')">El nombre debe tener al menos 3 caracteres.</span>
+                </div>
             </div>
+
+            <!-- Campo Descripción -->
             <div class="form-group">
                 <label for="descripcion">Descripción:</label>
                 <textarea id="descripcion" formControlName="descripcion" placeholder="Ingrese la descripción"></textarea>
             </div>
+
+            <!-- Campo Stock Actual -->
             <div class="form-group">
                 <label for="stockActual">Stock Actual:</label>
                 <input type="number" id="stockActual" formControlName="stockActual">
+                <div *ngIf="productoForm.get('stockActual')?.invalid && productoForm.get('stockActual')?.touched" class="error-message">
+                    <span *ngIf="productoForm.get('stockActual')?.hasError('required')">El stock actual es obligatorio.</span>
+                    <span *ngIf="productoForm.get('stockActual')?.hasError('min')">El stock actual debe ser mayor o igual a 0.</span>
+                </div>
             </div>
+
+            <!-- Campo Stock Mínimo -->
             <div class="form-group">
                 <label for="stockMinimo">Stock Mínimo:</label>
                 <input type="number" id="stockMinimo" formControlName="stockMinimo">
+                <div *ngIf="productoForm.get('stockMinimo')?.invalid && productoForm.get('stockMinimo')?.touched" class="error-message">
+                    <span *ngIf="productoForm.get('stockMinimo')?.hasError('required')">El stock mínimo es obligatorio.</span>
+                    <span *ngIf="productoForm.get('stockMinimo')?.hasError('min')">El stock mínimo debe ser mayor o igual a 0.</span>
+                </div>
             </div>
+
             <div class="form-group">
                 <label for="precio">Precio:</label>
-                <input type="number" id="precio" formControlName="precio">
+                <div class="input-container">
+                    <input type="number" id="precio" formControlName="precio" placeholder="$ 0.00">
+                  
+                </div>
+                <div *ngIf="productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched" class="error-message">
+                    <span *ngIf="productoForm.get('precio')?.hasError('required')">El precio es obligatorio.</span>
+                    <span *ngIf="productoForm.get('precio')?.hasError('min')">El precio debe ser mayor o igual a 0.</span>
+                </div>
             </div>
+            
+            
+
+            <!-- Campo Categoría -->
             <div class="form-group">
                 <label for="categoria">Categoría:</label>
                 <input type="text" id="categoria" formControlName="categoria">
             </div>
         </div>
         <div class="btn-container">
-            <button type="submit" class="btn-guardar" [disabled]="productoForm.invalid">Guardar</button>
+            <button type="submit" class="btn-guardar" (click)="productoForm">Guardar</button>
             <button type="reset" class="btn-cancelar" (click)="productoForm.reset()">Cancelar</button>
         </div>
     </form>

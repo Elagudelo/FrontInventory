@@ -10,7 +10,7 @@
 /* Título Principal */
 .home-title {
   font-size: 2.5rem;
-  color: #007bff;
+  color: #3A3960;
   margin-bottom: 10px;
   font-weight: bold;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -48,7 +48,7 @@
 .home-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
-  color: #007bff;
+  color: #3A3960;
 }
 
 .home-card p {
@@ -61,7 +61,7 @@
 .btn {
   display: inline-block;
   padding: 10px 15px;
-  background: #007bff;
+  background: #3A3960;
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -75,8 +75,8 @@
 
 /* Efecto hover en tarjetas */
 .home-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsividad */
