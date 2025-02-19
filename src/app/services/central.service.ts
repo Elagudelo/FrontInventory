@@ -36,6 +36,15 @@ export class ItemService {
       );
   }
 
+  ListarCategorias(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/categorias/mostrar`)
+      .pipe(
+        tap(data => {
+          console.log("Datos recibidos de /categorias/mostrar:", data);
+        })
+      );
+  }
+
   // Método para guardar un producto
   guardarProducto(producto: any): Observable<any> {
     console.log("📤 Datos enviados al servicio:", JSON.stringify(producto, null, 2));
@@ -55,6 +64,24 @@ export class ItemService {
       );
   }
 
+  guardarCategoria(producto: any): Observable<any> {
+    console.log("📤 Datos enviados al servicio:", JSON.stringify(producto, null, 2));
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post<any>(`${this.apiUrl}/categorias/crear`, producto, { headers })
+      .pipe(
+        tap(response => console.log("✅ Categoria guardado en el backend:", response)),
+        catchError(error => {
+          console.error("❌ Error al guardar Categoria en el backend:", error);
+          if (error.error) {
+            console.error("🔍 Respuesta del servidor:", JSON.stringify(error.error, null, 2));
+          }
+          return throwError(() => new Error(error?.error?.message || "Error desconocido al guardar el Categoria"));
+        })
+      );
+  }
+
 
   eliminarProducto(id: number): Observable<void> {
     console.log("📤 Eliminar producto con ID:", id);
@@ -70,6 +97,22 @@ export class ItemService {
         })
       );
   }
+
+  eliminarCategoria(id: number): Observable<void> {
+    console.log("📤 Eliminar producto con ID:", id);
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.delete<void>(`${this.apiUrl}/categorias/eliminar/${id}`, { headers })
+      .pipe(
+        tap(() => console.log(`✅ Categoria con ID ${id} eliminado`)),
+        catchError(error => {
+          console.error("❌ Error al eliminar Categoria:", error);
+          return throwError(() => new Error(error?.error?.message || "Error desconocido al eliminar el Categoria"));
+        })
+      );
+  }
+
   // Método para editar un producto
   editarProducto(id: number, producto: any): Observable<any> {
     console.log("📤 Editar producto con ID:", id);
@@ -82,6 +125,23 @@ export class ItemService {
         catchError(error => {
           console.error("❌ Error al editar producto:", error);
           return throwError(() => new Error(error?.error?.message || "Error desconocido al editar el producto"));
+        })
+      );
+  }
+
+  
+  // Método para editar un categoria
+  editarCategoria(id: number, categoria: any): Observable<any> {
+    console.log("📤 Editar producto con ID:", id);
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.put<any>(`${this.apiUrl}/categorias/editar/${id}`, categoria, { headers })
+      .pipe(
+        tap(response => console.log(`✅ categorias con ID ${id} actualizado`, response)),
+        catchError(error => {
+          console.error("❌ Error al editar categorias:", error);
+          return throwError(() => new Error(error?.error?.message || "Error desconocido al editar el categorias"));
         })
       );
   }
@@ -130,7 +190,7 @@ export class ItemService {
   // Método para iniciar sesión
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
-    return this.http.post<any>(`${this.apiUrl}/api/usuarios/login`, loginData)
+    return this.http.post<any>(`${this.apiUrl}/api/usuarios/ingreso/login`, loginData)
       .pipe(
         tap(response => {
           console.log("Respuesta del login:", response);

@@ -7,20 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app';
-
   constructor(private router: Router) {}
 
+  // Verifica si el usuario está autenticado
   isLoggedIn(): boolean {
-    return localStorage.getItem('user') !== null;
+    return !!localStorage.getItem('token'); // Devuelve true si hay un token
   }
 
+  // Verifica si la ruta actual es /login
   isLoginPage(): boolean {
     return this.router.url === '/login';
   }
 
+  // Cierra la sesión
   logout() {
-    localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('token'); // Elimina el token
+    localStorage.removeItem('role'); // Elimina el rol
+    this.router.navigate(['/login']); // Redirige al login
   }
 }

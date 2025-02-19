@@ -9,28 +9,28 @@ import Swal from 'sweetalert2';
   styleUrls: ['./categoria-listar.component.css']
 })
 export class CategoriaListarComponent implements OnInit {
- productos: any[] = [];
-  productoEditado: any = {}; // Para almacenar el producto que se va a editar
+  categorias: any[] = [];
+  categoriaEditado: any = {}; // Para almacenar el producto que se va a editar
 
   constructor(private itemService: ItemService) {}
 
   ngOnInit(): void {
-    this.listarProductos();
+    this.listarCategorias();
   }
 
-  listarProductos(): void {
-    this.itemService.ListarProductos().subscribe({
+  listarCategorias(): void {
+    this.itemService.ListarCategorias().subscribe({
       next: (data) => {
-        console.log("Datos recibidos de /productos/listar:", data);
-        this.productos = data;
+        console.log("Datos recibidos de /categorias/listar:", data);
+        this.categorias = data;
       },
       error: (error) => {
-        console.error("Error al obtener productos:", error);
+        console.error("Error al obtener categorias:", error);
       }
     });
   }
 
-  eliminarProducto(id: number): void {
+  eliminarCategoria(id: number): void {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás revertir esta acción',
@@ -42,34 +42,33 @@ export class CategoriaListarComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.itemService.eliminarProducto(id).subscribe({
+        this.itemService.eliminarCategoria(id).subscribe({
           next: () => {
             Swal.fire('Eliminado', 'El producto ha sido eliminado.', 'success');
-            this.productos = this.productos.filter(producto => producto.id !== id);
+            this.categorias = this.categorias.filter(categoria => categoria.id !== id);
           },
           error: (error) => {
             Swal.fire('Error', 'No se pudo eliminar el producto.', 'error');
-            console.error("❌ Error al eliminar producto:", error);
+            console.error("Error al eliminar producto:", error);
           }
         });
       }
     });
   }
   
-
-  editarProducto(producto: any): void {
-    this.productoEditado = { ...producto }; // Copiar los datos del producto a editar
+  editarCategoria(categoria: any): void {
+    this.categoriaEditado = { ...categoria }; // Copiar los datos del producto a editar
   }
 
   guardarEdicion(): void {
-    this.itemService.editarProducto(this.productoEditado.id, this.productoEditado).subscribe({
+    this.itemService.editarCategoria(this.categoriaEditado.id, this.categoriaEditado).subscribe({
       next: (response) => {
-        console.log("✅ Producto editado con éxito:", response);
-        this.listarProductos(); // Recargar los productos después de la edición
-        this.productoEditado = {}; // Limpiar la información del producto editado
+        console.log("Producto editado con éxito:", response);
+        this.listarCategorias(); // Recargar los productos después de la edición
+        this.categoriaEditado = {}; // Limpiar la información del producto editado
       },
       error: (error) => {
-        console.error("❌ Error al editar el producto:", error);
+        console.error("Error al editar el producto:", error);
       }
     });
   }

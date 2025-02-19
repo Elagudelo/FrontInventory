@@ -1,24 +1,27 @@
-<div class="home-container"> 
+<div class="home-container">
   <h1 class="home-title">Bienvenido al Sistema de Inventario</h1>
-  <p class="home-subtitle"> </p>
+  <p class="home-subtitle"></p>
 
   <div class="home-grid">
+    <!-- Tarjeta de Productos -->
     <div class="home-card">
       <h3><mat-icon>inventory</mat-icon> Productos</h3>
       <p>Gestiona y visualiza todos los productos disponibles en tu inventario.</p>
-      <a href="/productos" class="btn">Ver Productos</a>
+      <a routerLink="/productos" class="btn">Ver Productos</a> <!-- Usa routerLink -->
     </div>
 
+    <!-- Tarjeta de Categorías -->
     <div class="home-card">
       <h3><mat-icon>folder</mat-icon> Categorías</h3>
       <p>Organiza los productos en diferentes categorías para una mejor administración.</p>
-      <a href="/categorias" class="btn">Ver Categorías</a>
+      <a routerLink="/categorias" class="btn">Ver Categorías</a> <!-- Usa routerLink -->
     </div>
 
+    <!-- Tarjeta de Proveedores -->
     <div class="home-card">
       <h3><mat-icon>business</mat-icon> Proveedores</h3>
       <p>Mantén un control detallado de los proveedores asociados a tu negocio.</p>
-      <a href="/proveedores" class="btn">Ver Proveedores</a>
+      <a routerLink="/proveedores" class="btn">Ver Proveedores</a> <!-- Usa routerLink -->
     </div>
   </div>
 </div>

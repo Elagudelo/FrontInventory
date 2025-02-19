@@ -1,0 +1,37 @@
+<div class="form-container">
+    <h2 class="titulo-formulario">Agregar Categoria</h2>
+    <form [formGroup]="categoriaForm" (ngSubmit)="guardarCategoria()">
+        <div class="form-grid">
+            <!-- Campo Código -->
+            <div class="form-group">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" formControlName="codigo" placeholder="Ingrese el código">
+                <div *ngIf="categoriaForm.get('codigo')?.invalid && categoriaForm.get('codigo')?.touched" class="error-message">
+                    <span *ngIf="categoriaForm.get('codigo')?.hasError('required')">El código es obligatorio.</span>
+                    <span *ngIf="categoriaForm.get('codigo')?.hasError('minlength')">El código debe tener al menos 3 caracteres.</span>
+                </div>
+            </div>
+
+            <!-- Campo Nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" formControlName="nombre" placeholder="Ingrese el nombre">
+                <div *ngIf="categoriaForm.get('nombre')?.invalid && categoriaForm.get('nombre')?.touched" class="error-message">
+                    <span *ngIf="categoriaForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</span>
+                    <span *ngIf="categoriaForm.get('nombre')?.hasError('minlength')">El nombre debe tener al menos 3 caracteres.</span>
+                </div>
+            </div>
+
+            <!-- Campo Descripción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" formControlName="descripcion" placeholder="Ingrese la descripción"></textarea>
+            </div>
+
+        </div>
+        <div class="btn-container">
+            <button type="submit" class="btn-guardar" (click)="categoriaForm">Guardar</button>
+            <button type="reset" class="btn-cancelar" (click)="categoriaForm.reset()">Cancelar</button>
+        </div>
+    </form>
+</div>

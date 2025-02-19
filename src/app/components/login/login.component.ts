@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ItemService } from '../../services/central.service';
 
 @Component({
   selector: 'app-login',
@@ -10,14 +11,25 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private itemService: ItemService) {}
 
   onSubmit() {
-    if (this.username === 'admin' && this.password === '1234') {
-      localStorage.setItem('user', this.username);
-      this.router.navigate(['/home']); // Redirigir después de iniciar sesión
-    } else {
-      alert('Credenciales incorrectas');
-    }
+    this.itemService.login(this.username, this.password).subscribe({
+      next: (response: any) => {
+        console.log("Inicio de sesión exitoso:", response);
+        localStorage.setItem('token', response.token); // Guarda el token en el localStorage
+        localStorage.setItem('role', response.role);  // Guarda el rol en el localStorage
+  
+        console.log("Esperando 500ms antes de redirigir...");
+        setTimeout(() => {
+          this.router.navigate(['/home']);  // Redirige al home después del login
+        }, 500);
+      },
+      error: (error: any) => {
+        console.error("Error en el login:", error);
+        alert("Usuario o contraseña incorrectos");
+      }
+    });
   }
-}
+  
+}  

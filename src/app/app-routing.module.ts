@@ -4,33 +4,41 @@ import { HomeComponent } from './components/home/home.component';
 import { ItemListComponent } from './components/item-list/item-list.component';
 import { ApisPokemonComponent } from './components/apis-pokemon/apis-pokemon.component';
 import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './auth.guard';  // IMPORTANTE: Importar AuthGuard
+import { AuthGuard } from './auth.guard'; 
 import { ProductosComponent } from './components/productos-list/productos.component';
 import { CategoriaListarComponent } from './components/categoria-listar/categoria-listar.component';
-import { ProductoCrearComponent } from './components/productos/producto-crear.component';
+import { ProductoCrearComponent } from './components/productos-crear/producto-crear.component';
+import { CategoriasComponent } from './components/categorias-crear/categorias-crear.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent }, // Elimina el AuthGuard de aquí
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'items', component: ItemListComponent, canActivate: [AuthGuard] },
   { path: 'endpoint', component: ApisPokemonComponent, canActivate: [AuthGuard] },
-  { path: 'categorias', component: CategoriaListarComponent, canActivate: [AuthGuard] },
-
+  {
+    path: 'categorias',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: CategoriaListarComponent },
+      { path: 'crear', component: CategoriasComponent },
+      { path: 'editar/:id', component: CategoriasComponent },
+    ],
+  },
   {
     path: 'productos',
     canActivate: [AuthGuard],
     children: [
-      { path: '', component: ProductosComponent }, // Lista de productos
-      { path: 'crearproducto', component: ProductoCrearComponent }, // Formulario de creación
-      { path: 'crearproducto/:id', component: ProductoCrearComponent },  // Ruta para editar producto
-    ]
-  }
+      { path: '', component: ProductosComponent },
+      { path: 'crear', component: ProductoCrearComponent },
+      { path: 'editar/:id', component: ProductoCrearComponent },
+    ],
+  },
+  { path: '**', redirectTo: '/login' }, // Redirige a login si la ruta no existe
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { useHash: true })], // Se usa hash para evitar problemas con rutas en producción
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
-
+export class AppRoutingModule {}

@@ -8,9 +8,9 @@ import { ApisPokemonComponent } from './components/apis-pokemon/apis-pokemon.com
 import { HomeComponent } from './components/home/home.component'; // Agregar HomeComponent aquí
 import { LoginComponent } from './components/login/login.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
-import { CategoriasComponent } from './components/categorias/categorias.component';
+import { CategoriasComponent } from './components/categorias-crear/categorias-crear.component';
 import { ProductosComponent } from './components/productos-list/productos.component';
-import { ProductoCrearComponent } from './components/productos/producto-crear.component';
+import { ProductoCrearComponent } from './components/productos-crear/producto-crear.component';
 import { CategoriaListarComponent } from './components/categoria-listar/categoria-listar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // ✅ Importar ReactiveFormsModule
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -31,6 +31,7 @@ import { MatButtonModule } from '@angular/material/button';
     ProductosComponent,
     ProductoCrearComponent,
     CategoriaListarComponent,
+    CategoriasComponent,
     HomeComponent,
    
   ],
@@ -39,7 +40,7 @@ import { MatButtonModule } from '@angular/material/button';
     AppRoutingModule,
     MatIconModule,
     FormsModule,  
-    ReactiveFormsModule, // ✅ Agregar esto
+    ReactiveFormsModule,
     MatDialogModule,
     HttpClientModule,
     
